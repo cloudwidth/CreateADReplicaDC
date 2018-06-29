@@ -14,7 +14,7 @@ locals = {
 }
 
 resource "azurerm_resource_group" "newdcrg" {
-  name     = "${local.identifier}"
+  name     = "${var.new_dc_resourcegroup}"
   location = "${var.location}"
 
   /* Optional Tags
@@ -136,7 +136,7 @@ resource "azurerm_virtual_machine_extension" "CreateADReplicaDC" {
     {
         "wmfVersion": "latest",
         "configuration": {
-            "url": "https://dolab1sa.blob.core.windows.net/dsc/CreateADReplicaDC.zip",
+            "url": "https://raw.githubusercontent.com/texmx/CreateADReplicaDC/master/CreateADReplicaDC.zip",
             "script": "CreateADReplicaDC.ps1",
             "function": "CreateADReplicaDC"
         },

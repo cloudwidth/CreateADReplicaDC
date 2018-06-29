@@ -5,8 +5,8 @@ configuration CreateADReplicaDC
     (
         [Parameter(Mandatory)][String]$DomainName,
         [Parameter(Mandatory)][System.Management.Automation.PSCredential]$Admin_credentials,
-        [Parameter(Mandatory)][System.Management.Automation.PSCredential]$SafeMode_credentials
-        [Parameter(Mandatory)][String]$ADSiteName,
+        [Parameter(Mandatory)][System.Management.Automation.PSCredential]$SafeMode_credentials,
+        [Parameter(Mandatory)][String]$ADSiteName
         #[Parameter(Mandatory)][String]$AdminUser,
         #[Parameter(Mandatory)][String]$AdminPassword,
         #[Parameter(Mandatory)][String]$SafeModeUser,
