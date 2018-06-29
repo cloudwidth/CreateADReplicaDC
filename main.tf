@@ -51,7 +51,7 @@ resource "azurerm_network_interface" "newdcnic" {
   resource_group_name     = "${azurerm_resource_group.newdcrg.name}"
   count                   = "${var.count}"
   internal_dns_name_label = "dc-${count.index + 1}"
-  dns_servers             = ["${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, 4)}", "10.0.0.4"]
+  dns_servers             = ["${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, 4)}]
 
   ip_configuration {
     name                          = "${var.vmname_prefix}${count.index + 1}-ip_config"
@@ -59,8 +59,8 @@ resource "azurerm_network_interface" "newdcnic" {
     private_ip_address_allocation = "Static"
     private_ip_address            = "${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, "${count.index + 5}")}"
   }
-
-  /* Optional Tags
+/*
+  Optional Tags
   tags = {
     Environment = "Development"
     DeployDate  = "${replace(timestamp(), "/T.*$/", "")}"

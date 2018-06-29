@@ -32,16 +32,22 @@ configuration CreateADReplicaDC
             AllowModuleOverwrite = $true
         }
 
-       WindowsFeature ADDSTools
+       WindowsFeature ADDS
         {
             Ensure = 'Present'
             Name = 'AD-Domain-Services'
         }
 
-       WindowsFeature RSAT 
+       WindowsFeature RSATADTools
         {
            Ensure = "Present"
-           Name = "RSAT"
+           Name = "RSAT-AD-Tools"
+        }
+
+        WindowsFeature RSATADAdminCenter
+        {
+           Ensure = "Present"
+           Name = "RSAT-AD-AdminCenter"
         }
 
        WaitForDisk Disk2
@@ -68,7 +74,7 @@ configuration CreateADReplicaDC
           DatabasePath = "F:\NTDS"
           LogPath = "F:\NTDS"
           SysvolPath = "F:\SYSVOL"
-          DependsOn = "[Disk]ADDataDisk", "[WindowsFeature]ADDSTools"
+          DependsOn = "[Disk]ADDataDisk", "[WindowsFeature]ADDS"
           SiteName = $ADSiteName
         }
 
