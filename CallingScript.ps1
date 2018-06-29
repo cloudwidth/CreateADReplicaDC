@@ -45,6 +45,18 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscription/SUBSCRIPTI
     azure_client_id       = client_id
     azure_client_secret   = client_secret
     azure_tenant_id       = tenant_id
+
+    location = "eastus"                         #Azure Location to deploy to
+    new_dc_resourcegroup = "NewDCRG"            #New Resource Group to contain your new domain controllers
+    target_vnet_resourcegroup = "ExistingDCRG"  #Existing Resource Group containing the vnet where the domain controllers should be deployed
+    target_vnet = "adVNET"                      #Existing vnet where the domain controllers should be deployed
+    target_subnet = "adSubnet"                  #Existing subnet in the existing vnet where the domain controllers should be deployed
+    vmname_prefix = "AZ-ADDS"                   #VM name prefix.  (i.e. AZ-ADDS1, AZ-ADDS2, etc)
+    addomain = "contoso.com"                    #FQDN of the existing Active Directory domain to which the new machines sould be joined.
+    admin_username = "adadministrator"          #Domain Administrator of the domain to join
+    admin_password = "P@ssw0rd!!"               #Password for the Domain Administrator
+    safemode_password = "P@ssw0rd!!"            #Password for SafeMode
+    adsitename = "Default-First-Site-Name"      #Name of the existing Active Directory Site to associate with the new domain controllers
 #>
 
 terraform init -no-color -var-file="CreateADReplicaDC.tfvars"
