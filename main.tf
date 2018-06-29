@@ -6,13 +6,6 @@ provider "azurerm" {
   tenant_id       = "${var.azure_tenant_id}"
 }
 
-locals = {
-  identifier      = "${terraform.workspace}-ad"
-  identifier_safe = "${replace(terraform.workspace,"-","")}ad"
-  infra_tier      = "${terraform.workspace}-infra"
-  vm_size         = "Standard_D2_v2"
-}
-
 resource "azurerm_resource_group" "newdcrg" {
   name     = "${var.new_dc_resourcegroup}"
   location = "${var.location}"
@@ -51,7 +44,7 @@ resource "azurerm_network_interface" "newdcnic" {
   resource_group_name     = "${azurerm_resource_group.newdcrg.name}"
   count                   = "${var.count}"
   internal_dns_name_label = "dc-${count.index + 1}"
-  dns_servers             = ["${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, 4)}]
+  dns_servers             = ["${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, 4)}"]
 
   ip_configuration {
     name                          = "${var.vmname_prefix}${count.index + 1}-ip_config"
@@ -59,7 +52,8 @@ resource "azurerm_network_interface" "newdcnic" {
     private_ip_address_allocation = "Static"
     private_ip_address            = "${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, "${count.index + 5}")}"
   }
-/*
+
+  /*
   Optional Tags
   tags = {
     Environment = "Development"
@@ -73,7 +67,7 @@ resource "azurerm_virtual_machine" "dc" {
   location                         = "${var.location}"
   resource_group_name              = "${azurerm_resource_group.newdcrg.name}"
   network_interface_ids            = ["${element(azurerm_network_interface.newdcnic.*.id, count.index)}"]
-  vm_size                          = "${local.vm_size}"
+  vm_size                          = "${var.vm_size}"
   delete_os_disk_on_termination    = true
   delete_data_disks_on_termination = true
   availability_set_id              = "${azurerm_availability_set.newdcas.id}"

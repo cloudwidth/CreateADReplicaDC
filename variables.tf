@@ -62,3 +62,8 @@ variable admin_password {
 variable safemode_password {
   type = "string"
 }
+
+variable vm_size {
+  type    = "string"
+  default = "Standard_D2_v2"
+}
