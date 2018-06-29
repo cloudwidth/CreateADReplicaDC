@@ -50,7 +50,7 @@ resource "azurerm_network_interface" "newdcnic" {
     name                          = "${var.vmname_prefix}${count.index + 1}-ip_config"
     subnet_id                     = "${data.azurerm_subnet.newdc-subnet.id}"
     private_ip_address_allocation = "Static"
-    private_ip_address            = "${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, "${count.index + 5}")}"
+    private_ip_address            = "${cidrhost(data.azurerm_subnet.newdc-subnet.address_prefix, "${count.index + 100}")}"
   }
 
   /*
