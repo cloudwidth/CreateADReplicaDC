@@ -4,8 +4,9 @@ break
 # Shout out to @goateepfe for laying the groundwork fror some of this.
 
 #Install Chocolatey, then use it to install Terraform
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install terraform --version 0.11.7
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+#May have to restart the PowerShell session before the next line
+choco install terraform
 
 #Download the Terraform script files
 Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/texmx/CreateADReplicaDC/master/CreateADReplicaDC.tf' -OutFile '.\CreateADReplicaDC.tf'
