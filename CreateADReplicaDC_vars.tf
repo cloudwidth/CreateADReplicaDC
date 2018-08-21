@@ -1,3 +1,4 @@
+/*
 variable "azure_subscription_id" {
   type = "string"
 }
@@ -13,7 +14,7 @@ variable azure_client_secret {
 variable azure_tenant_id {
   type = "string"
 }
-
+*/
 variable location {
   type = "string"
 }
