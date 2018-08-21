@@ -14,9 +14,9 @@ addomain = "knightfall.com"
 
 admin_username = "adadministrator"
 
-admin_password = "Gordon18!"
+admin_password = "P@ssw0rd!!"
 
-safemode_password = "Gordon18!"
+safemode_password = "P@ssw0rd!!"
 
 adsitename = "Default-First-Site-Name"
 
