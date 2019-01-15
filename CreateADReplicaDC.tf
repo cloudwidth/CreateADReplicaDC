@@ -125,7 +125,7 @@ resource "azurerm_virtual_machine_extension" "CreateADReplicaDC" {
     {
         "wmfVersion": "latest",
         "configuration": {
-            "url": "https://raw.githubusercontent.com/texmx/CreateADReplicaDC/master/CreateADReplicaDC.zip",
+            "url": "https://raw.githubusercontent.com/cloudwidth/CreateADReplicaDC/master/CreateADReplicaDC.zip",
             "script": "CreateADReplicaDC.ps1",
             "function": "CreateADReplicaDC"
         },
