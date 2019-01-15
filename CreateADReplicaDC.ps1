@@ -13,9 +13,9 @@ configuration CreateADReplicaDC
         #[Parameter(Mandatory)][String]$SafeModePassword
     )
 
-    Import-DscResource -ModuleName PSDesiredStateConfiguration
-    Import-DscResource -ModuleName StorageDSC 
-    Import-DscResource -ModuleName xActiveDirectory
+    Import-DscResource -ModuleName PSDesiredStateConfiguration -ModuleVersion 1.1
+    Import-DscResource -ModuleName StorageDSC -ModuleVersion 4.4.0.0
+    Import-DscResource -ModuleName xActiveDirectory -ModuleVersion 2.19.0.0
 
     #$secadminpasswd = ConvertTo-SecureString $AdminPassword -AsPlainText -Force
     #$secsafemodepasswd = ConvertTo-SecureString $SafeModePassword -AsPlainText -Force
