@@ -1,22 +1,22 @@
 location = "eastus"
 
-new_dc_resourcegroup = "BatCloudRG2"
+new_dc_resourcegroup = "RG-2019GAB2"
 
-target_vnet_resourcegroup = "BatCloudRG"
+target_vnet_resourcegroup = "RG-2019GAB"
 
-target_vnet = "adVNET"
+target_vnet = "GAB2019DemoVNet2"
 
-target_subnet = "adSubnet"
+target_subnet = "Subnet2"
 
-vmname_prefix = "adDC"
+vmname_prefix = "GAB2019DCvm"
 
-addomain = "knightfall.com"
+addomain = "GAB2019Demo.com"
 
 admin_username = "adadministrator"
 
-admin_password = "P@ssw0rd!!"
+admin_password = "Tortola4two!"
 
-safemode_password = "P@ssw0rd!!"
+safemode_password = "Tortola4two!"
 
 adsitename = "Default-First-Site-Name"
 
